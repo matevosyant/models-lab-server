@@ -4,7 +4,16 @@ const axios = require('axios');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
+// ✅ Расширенная настройка CORS
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+};
+
+app.use(cors(corsOptions));
+app.options('/generate', cors(corsOptions));
+
 app.use(express.json());
 
 const API_KEY = process.env.API_KEY;
