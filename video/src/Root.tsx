@@ -1,5 +1,7 @@
-import { Composition } from "remotion";
+import { Composition, Folder } from "remotion";
 import { HelloWorld, helloWorldSchema } from "./HelloWorld";
+import { AI_SHORT_DURATION, AiShort, aiShortSchema } from "./shorts/AiShort";
+import { ep01 } from "./shorts/episodes/ep01-prompt-formula";
 import {
   Slideshow,
   calculateSlideshowMetadata,
@@ -42,6 +44,18 @@ export const RemotionRoot: React.FC = () => {
           transitionSeconds: 0.5,
         }}
       />
+      <Folder name="Shorts">
+        <Composition
+          id="AiShort-ep01"
+          component={AiShort}
+          durationInFrames={AI_SHORT_DURATION}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={aiShortSchema}
+          defaultProps={ep01}
+        />
+      </Folder>
     </>
   );
 };
