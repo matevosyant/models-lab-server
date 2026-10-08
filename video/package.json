@@ -11,11 +11,14 @@
     "render:ep01": "remotion render AiShort-ep01 out/ai-short-ep01.mp4 --crf=18",
     "image": "node scripts/image.mjs",
     "upgrade": "remotion upgrade",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "render:explainer-ep01": "remotion render Explainer-ep01 out/explainer-ep01.mp4 --crf=22",
+    "voiceover": "node scripts/voiceover.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
     "@remotion/fonts": "4.0.534",
+    "@remotion/media": "4.0.534",
     "@remotion/transitions": "4.0.534",
     "@remotion/zod-types": "4.0.534",
     "react": "19.3.0",

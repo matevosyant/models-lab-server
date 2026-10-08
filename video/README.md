@@ -31,6 +31,20 @@ npx remotion render HelloWorld out/custom.mp4 --props='{"title":"Привет","
 - `public/` — картинки, аудио и шрифты; подключаются через `staticFile("имя")`
 - `remotion.config.ts` — настройки CLI
 
+## Обучающие ролики 90+ секунд (`src/explainer/`)
+
+Каждый выпуск — это сценарий в JSON (`src/explainer/episodes/*.json`): сцены, текст диктора и содержимое анимации.
+Типы сцен: `hook`, `promise`, `tokens`, `predict`, `chat`, `tip`, `outro` (см. `src/explainer/types.ts`).
+
+```bash
+npm run voiceover -- src/explainer/episodes/ep01-how-ai-thinks.json   # озвучка ElevenLabs
+npm run render:explainer-ep01                                         # рендер в out/explainer-ep01.mp4
+```
+
+Для озвучки нужны переменная окружения `ELEVENLABS_API_KEY` (и, по желанию, `ELEVENLABS_VOICE_ID`)
+и доступ к `api.elevenlabs.io`. Озвучка сохраняется в `public/voiceover/<выпуск>/`; после этого длительность сцен
+подстраивается под голос, а субтитры идут слово в слово. Без озвучки время считается приблизительно.
+
 ## Картинки
 
 Картинки лежат в `public/images/`, а в коде подключаются через `<Img src={staticFile("images/имя.jpg")} />`.

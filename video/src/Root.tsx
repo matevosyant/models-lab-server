@@ -1,5 +1,11 @@
 import { Composition, Folder } from "remotion";
 import { HelloWorld, helloWorldSchema } from "./HelloWorld";
+import {
+  Explainer,
+  calculateExplainerMetadata,
+  type ExplainerProps,
+} from "./explainer/Explainer";
+import ep01Explainer from "./explainer/episodes/ep01-how-ai-thinks.json";
 import { AI_SHORT_DURATION, AiShort, aiShortSchema } from "./shorts/AiShort";
 import { ep01 } from "./shorts/episodes/ep01-prompt-formula";
 import {
@@ -44,6 +50,18 @@ export const RemotionRoot: React.FC = () => {
           transitionSeconds: 0.5,
         }}
       />
+      <Folder name="Explainers">
+        <Composition
+          id="Explainer-ep01"
+          component={Explainer}
+          durationInFrames={3000}
+          fps={30}
+          width={1080}
+          height={1920}
+          calculateMetadata={calculateExplainerMetadata}
+          defaultProps={{ episode: ep01Explainer } as ExplainerProps}
+        />
+      </Folder>
       <Folder name="Shorts">
         <Composition
           id="AiShort-ep01"
